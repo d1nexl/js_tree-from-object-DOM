@@ -46,16 +46,13 @@ createTree(tree, food);
 
 tree.addEventListener('click', (e) => {
   if (e.target.tagName === 'LI') {
-    const liRect = e.target.getBoundingClientRect();
-    const textWidth = e.target.textContent.trim().length * 8;
+    const subTree = e.target.querySelector('ul');
 
-    if (e.clientX < liRect.left + textWidth) {
-      const subTree = e.target.querySelector('ul');
-
-      if (subTree) {
-        subTree.style.display =
-          subTree.style.display === 'none' ? 'block' : 'none';
-      }
+    if (subTree) {
+      subTree.style.display =
+        subTree.style.display === 'none' || subTree.style.display === ''
+          ? 'block'
+          : 'none';
     }
   }
 });

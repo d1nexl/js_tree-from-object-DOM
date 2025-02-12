@@ -49,10 +49,11 @@ tree.addEventListener('click', (e) => {
     const subTree = e.target.querySelector('ul');
 
     if (subTree) {
-      subTree.style.display =
-        subTree.style.display === 'none' || subTree.style.display === ''
-          ? 'block'
-          : 'none';
+      if (subTree.style.display === 'none' || subTree.style.display === '') {
+        subTree.style.display = 'block';
+      } else {
+        subTree.style.display = 'none';
+      }
     }
   }
 });

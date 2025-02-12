@@ -49,7 +49,7 @@ tree.addEventListener('click', (e) => {
     const subTree = e.target.querySelector('ul');
 
     if (subTree) {
-      if (subTree.style.display === 'none' || subTree.style.display === '') {
+      if (subTree.style.display === '' || subTree.style.display === 'none') {
         subTree.style.display = 'block';
       } else {
         subTree.style.display = 'none';

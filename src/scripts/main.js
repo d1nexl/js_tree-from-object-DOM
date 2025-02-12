@@ -29,7 +29,11 @@ function createTree(element, data) {
     li.textContent = key;
 
     if (Object.keys(data[key]).length > 0) {
-      createTree(li, data[key]);
+      const subTree = document.createElement('ul');
+
+      createTree(subTree, data[key]);
+      subTree.style.display = 'none';
+      li.appendChild(subTree);
     }
 
     ul.appendChild(li);
@@ -39,3 +43,19 @@ function createTree(element, data) {
 }
 
 createTree(tree, food);
+
+tree.addEventListener('click', (e) => {
+  if (e.target.tagName === 'LI') {
+    const liRect = e.target.getBoundingClientRect();
+    const textWidth = e.target.textContent.trim().length * 8;
+
+    if (e.clientX < liRect.left + textWidth) {
+      const subTree = e.target.querySelector('ul');
+
+      if (subTree) {
+        subTree.style.display =
+          subTree.style.display === 'none' ? 'block' : 'none';
+      }
+    }
+  }
+});
